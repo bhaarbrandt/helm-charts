@@ -183,10 +183,10 @@ postgresql:
     database: ehrbase
     # -- Name of the existing Kubernetes Secret that contains the PostgreSQL password
     existingSecret: "ehrbase-postgresql"
-    # -- Secret keys for PostgreSQL passwords
-    secretKeys:
-      adminPasswordKey: "postgres-password"
-      userPasswordKey: "password"
+    # -- Key in the existing Kubernetes Secret that contains the PostgreSQL password
+    existingSecretPasswordKey: "password"
+    # -- Key in the existing Kubernetes Secret that contains the PostgreSQL admin password
+    existingSecretPostgresPasswordKey: "postgres-password"
 
   # -- Architecture of the PostgreSQL deployment, either `standalone` or `replication`
   architecture: standalone

@@ -169,16 +169,24 @@ tolerations: []
 affinity: {}
 
 postgresql:
+  # -- Enable or disable the PostgreSQL chart
   enabled: true
+
   auth:
-    existingSecret: "ehrbase-postgresql"
-    secretKeys:
-      userPasswordKey: "password"
-      adminPasswordKey: "postgres-password"
-    username: ehrbase
+    # -- Password for the PostgreSQL admin user
     postgresPassword: ""
+    # -- Username for the PostgreSQL user
+    username: ehrbase
+    # -- Password for the PostgreSQL user
     password: ""
+    # -- Database name for the PostgreSQL user
     database: ehrbase
+    # -- Name of the existing Kubernetes Secret that contains the PostgreSQL password
+    existingSecret: "ehrbase-postgresql"
+    # -- Secret keys for PostgreSQL passwords
+    secretKeys:
+      adminPasswordKey: "postgres-password"
+      userPasswordKey: "password"
 
   # -- Architecture of the PostgreSQL deployment, either `standalone` or `replication`
   architecture: standalone
@@ -204,17 +212,17 @@ postgresql:
 externalPostgresql:
   host: ""
   # -- Port number of the external PostgreSQL server
-  port: ""
+  port: 5432
   # -- Username for the external PostgreSQL server
   username: ehrbase
   # -- Password for the external PostgreSQL server
   password: ""
   # -- Database name for the external PostgreSQL server
-  database: ""
+  database: ehrbase
   # -- Name of the existing Kubernetes Secret that contains the PostgreSQL password
   existingSecret: ""
   # -- Key in the existing Kubernetes Secret that contains the PostgreSQL password
-  existingSecretPasswordKey: ""
+  existingSecretPasswordKey: "password"
 
 redis:
   # -- Enable or disable the Redis chart

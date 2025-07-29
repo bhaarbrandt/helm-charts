@@ -12,7 +12,7 @@ auth:
     # -- Password for the regular user
     password: ""
     # -- Name of the existing Kubernetes Secret that contains the credentials
-    existingSecret: ""
+    existingSecret: "ehrbase-auth-users"
     # -- Key in the existing Kubernetes Secret that contains the admin username
     existingSecretAdminUsernameKey: admin-username
     # -- Key in the existing Kubernetes Secret that contains the admin password
@@ -182,7 +182,11 @@ postgresql:
     # -- Database name for the PostgreSQL user
     database: ehrbase
     # -- Name of the existing Kubernetes Secret that contains the PostgreSQL password
-    existingSecret: ""
+    existingSecret: "ehrbase-postgresql"
+    # -- Secret keys for PostgreSQL passwords
+    secretKeys:
+      adminPasswordKey: "postgres-password"
+      userPasswordKey: "password"
 
   # -- Architecture of the PostgreSQL deployment, either `standalone` or `replication`
   architecture: standalone
@@ -232,9 +236,9 @@ redis:
     # -- Password for the Redis server
     password: ""
     # -- Name of the existing Kubernetes Secret that contains the Redis password
-    existingSecret: ""
+    existingSecret: "ehrbase-redis"
     # -- Key in the existing Kubernetes Secret that contains the Redis password
-    existingSecretPasswordKey: ""
+    existingSecretPasswordKey: "redis-password"
 
 externalRedis:
   # -- Hostname or IP address of the external Redis server

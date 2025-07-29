@@ -40,7 +40,7 @@ tls:
 
 containerPorts:
   # -- Port for HTTP traffic
-  http: 8080
+  http: 8085
   # -- Port for HTTPS traffic
   https: 8443
   # -- Port for management traffic
@@ -97,7 +97,7 @@ service:
   type: ClusterIP
   ports:
     # -- Port for HTTP traffic
-    http: 8080
+    http: 8085
     # -- Port for HTTPS traffic
     https: 8443
     # -- Port for management traffic

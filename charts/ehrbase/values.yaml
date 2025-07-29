@@ -40,7 +40,7 @@ tls:
 
 containerPorts:
   # -- Port for HTTP traffic
-  http: 8085
+  http: 8080
   # -- Port for HTTPS traffic
   https: 8443
   # -- Port for management traffic
@@ -97,7 +97,7 @@ service:
   type: ClusterIP
   ports:
     # -- Port for HTTP traffic
-    http: 8085
+    http: 8080
     # -- Port for HTTPS traffic
     https: 8443
     # -- Port for management traffic
@@ -169,24 +169,16 @@ tolerations: []
 affinity: {}
 
 postgresql:
-  # -- Enable or disable the PostgreSQL chart
   enabled: true
-
   auth:
-    # -- Password for the PostgreSQL admin user
-    postgresPassword: ""
-    # -- Username for the PostgreSQL user
-    username: ehrbase
-    # -- Password for the PostgreSQL user
-    password: ""
-    # -- Database name for the PostgreSQL user
-    database: ehrbase
-    # -- Name of the existing Kubernetes Secret that contains the PostgreSQL password
     existingSecret: "ehrbase-postgresql"
-    # -- Key in the existing Kubernetes Secret that contains the PostgreSQL password
-    passwordKey: "password"
-    # -- Key in the existing Kubernetes Secret that contains the PostgreSQL admin password
-    postgresPasswordKey: "postgres-password"
+    secretKeys:
+      userPasswordKey: "password"
+      adminPasswordKey: "postgres-password"
+    username: ehrbase
+    postgresPassword: ""
+    password: ""
+    database: ehrbase
 
   # -- Architecture of the PostgreSQL deployment, either `standalone` or `replication`
   architecture: standalone
@@ -212,17 +204,17 @@ postgresql:
 externalPostgresql:
   host: ""
   # -- Port number of the external PostgreSQL server
-  port: 5432
+  port: ""
   # -- Username for the external PostgreSQL server
   username: ehrbase
   # -- Password for the external PostgreSQL server
   password: ""
   # -- Database name for the external PostgreSQL server
-  database: ehrbase
+  database: ""
   # -- Name of the existing Kubernetes Secret that contains the PostgreSQL password
   existingSecret: ""
   # -- Key in the existing Kubernetes Secret that contains the PostgreSQL password
-  existingSecretPasswordKey: "password"
+  existingSecretPasswordKey: ""
 
 redis:
   # -- Enable or disable the Redis chart

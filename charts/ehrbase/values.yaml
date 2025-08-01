@@ -236,9 +236,9 @@ redis:
     # -- Password for the Redis server
     password: ""
     # -- Name of the existing Kubernetes Secret that contains the Redis password
-    existingSecret: "ehrbase-redis"
+    existingSecret: ""
     # -- Key in the existing Kubernetes Secret that contains the Redis password
-    existingSecretPasswordKey: "redis-password"
+    existingSecretPasswordKey: ""
 
 externalRedis:
   # -- Hostname or IP address of the external Redis server

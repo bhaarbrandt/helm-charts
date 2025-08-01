@@ -59,7 +59,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ include "ehrbase.postgres.secretName" . }}
-                  key: {{ include "ehrbase.postgres.secretAdminPasswordKey" . }}
+                  key: {{ include "ehrbase.postgres.secretUserPasswordKey" . }}
             {{- if eq .Values.auth.type "basic" }}
             - name: SECURITY_AUTHADMINUSER
               valueFrom:

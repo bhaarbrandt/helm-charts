@@ -179,7 +179,7 @@ Return the admin password key to be retrieved from the PostgreSQL secret
 */}}
 {{- define "ehrbase.postgres.secretAdminPasswordKey" -}}
 {{- if .Values.postgresql.enabled }}
-{{- default "postgres-password" .Values.postgresql.auth.secretKeys.adminPasswordKey }}
+{{- default "password" .Values.postgresql.auth.secretKeys.adminPasswordKey }}
 {{- else }}
 {{- default "password" .Values.externalPostgresql.existingSecretPasswordKey }}
 {{- end }}
